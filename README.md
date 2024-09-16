@@ -1,12 +1,36 @@
 # reward2sw
 
-This project aims to create an interface for analyzing salary revision scenarios or benefit allocation based on predefined criteria.
+**Team Members:** Francisco Vieira, Pedro Silva
+
+## Project Overview
+The goal of this project was to develop an interface for analyzing salary revision scenarios and benefit allocations based on predefined criteria.
 
 ## Problem
-Currently, evaluating salary revisions (e.g., annual increases) or benefit allocations (e.g., transport allowance for employees working in different locations) requires manually filtering and updating Excel files. The process involves adding new columns with criteria (e.g., 5% salary increase), calculating the impact, and determining budget alignment. If not within budget, the process is repeated manually, which is time-consuming and error-prone, especially with a large workforce (1,000+ employees).
+In the past, evaluating salary revisions (e.g., annual increases) or benefit allocations (e.g., transport allowance for employees working in different locations) required manual filtering and updating of Excel files. This involved:
+- Adding new columns with criteria (e.g., 5% salary increase)
+- Calculating the impact and assessing budget alignment
+- Repeating the process if results were not within budget
+
+This manual approach was time-consuming and error-prone, particularly given the large workforce of over 1,000 employees.
 
 ## Objective
-The goal is to develop an interface where the latest employee data is uploaded from Excel, criteria (e.g., 6% increase) and target groups (e.g., section heads) are defined, and an automated output is generated for all eligible employees. The results should be exportable to Excel for integration with the company's ERP system (SAP).
+To streamline this process, we aimed to create an interface that:
+- Uploads the latest employee data from an Excel file
+- Applies defined criteria (e.g., 6% increase) and target groups (e.g., section heads)
+- Generates an automated output for all eligible employees
 
-## Challenge
-Create software that can generate compensation and benefit scenarios for our workforce efficiently and accurately.
+The results needed to be exportable to Excel for integration with the company's ERP system (SAP).
+
+## Outcome
+We successfully developed a program that processes two Excel files:
+- **Employee Database**
+- **Salary Bands for Each Profession**
+
+The program uses these files, along with specified criteria and target groups, to generate the following outputs:
+- **HTML Page:** Displays the most relevant data.
+- **Excel File:** Contains two sheets:
+  - **Sheet 1:** An updated version of the original file with:
+    - Red-marked lines for non-eligible employees
+    - Yellow-marked lines for employees whose adjusted salaries would exceed the provided salary bands
+    - Updated values for eligible employees
+  - **Sheet 2:** A new sheet with co-workers set aside for future analysis.
