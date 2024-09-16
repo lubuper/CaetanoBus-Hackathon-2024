@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{% endblock %}
+
+
+{% block content %}
+<div class="content">
+  <form action="/upload" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="file">Select Revision file:</label>
+      <input class="file" type="file" name="file1" />
+	  <label for="file">Select Salary Bands file:</label>
+      <input class="file" type="file" name="file2" />
+    </div>
+    <div class="side-side">
+      <div class="form-group raiser">
+        <label class="text-raise" for="raise">Raise All by %:</label>
+        <input type="number" name="percentage" class="form-control" min="0" step="0.1" placeholder="€ %">
+      </div>
+      <div class="form-group nomes">
+        <label for="date">Filter by Date:</label>
+        <input class="dater" type="date" name="date" placeholder="Enter date" />
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" value="" id="selectalldate">
+          <label for="selectalldate" class="form-check-label">Filter By Current Date</label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group cat">
+      <label for="group">Filter by Category:</label>
+      <select name="groupselect" class="form-select">
+		<option selected disabled hidden>Select Group...</option>
+		<option value="OPERADOR SERROTE OFICIAL 1">OPERADOR SERROTE OFICIAL 1</option>
+		<option value="MECATRÓNICO AUTO 2ª">MECATRÓNICO AUTO 2ª</option>
+		<option value="OPERADOR MANUTENÇÃO OFIC. 2">OPERADOR MANUTENÇÃO OFIC. 2</option>
+		<option value="OPERADOR MÁQUINAS DIVERSAS">OPERADOR MÁQUINAS DIVERSAS</option>
+		<option value="CHEFE EQUIPA">CHEFE EQUIPA</option>
+		<option value="DIRETOR DEPARTAMENTO">DIRETOR DEPARTAMENTO</option>
+		<option value="CHEFE SERVIÇOS">CHEFE SERVIÇOS</option>
+		<option value="CHEFE SECÇÃO">CHEFE SECÇÃO</option>
+		<option value="TÉCNICO III">TÉCNICO III</option>
+		<option value="TÉCNICO II">TÉCNICO II</option>
+		<option value="TÉCNICO I">TÉCNICO I</option>
+		<option value="TÉCNICO CONTROLE QUALIDADE">TÉCNICO CONTROLE QUALIDADE</option>
+		<option value="FIEL ARMAZÉM">FIEL ARMAZÉM</option>
+		<option value="PRÉ OFICIAL ELECTRICISTA DO 2 ANO">PRÉ OFICIAL ELECTRICISTA DO 2 ANO</option>
+		<option value="CARPINTEIRO CAR.EST. OF.1">CARPINTEIRO CAR.EST. OF.1</option>
+		<option value="CARPINTEIRO CAR.EST. OF.2">CARPINTEIRO CAR.EST. OF.2</option>
+		<option value="CARPINTEIRO CAR.EST. OF.3">CARPINTEIRO CAR.EST. OF.3</option>
+		<option value="ELECTRICISTA AUTO OFICIAL 1">ELECTRICISTA AUTO OFICIAL 1</option>
+		<option value="ELECTRICISTA AUTO PRÉ-OFIC.">ELECTRICISTA AUTO PRÉ-OFIC.</option>
+		<option value="MECÂNICO AUTO OFICIAL 1">MECÂNICO AUTO OFICIAL 1</option>
+		<option value="MECÂNICO AUTO OFICIAL 2">MECÂNICO AUTO OFICIAL 2</option>
+		<option value="MECÂNICO AUTO OFICIAL 3">MECÂNICO AUTO OFICIAL 3</option>
+		<option value="PINTOR OFICIAL 1">PINTOR OFICIAL 1</option>
+		<option value="PINTOR OFICIAL 2">PINTOR OFICIAL 2</option>
+		<option value="PINTOR OFICIAL 3">PINTOR OFICIAL 3</option>
+		<option value="SERRALHEIRO CIVIL OFICIAL 1">SERRALHEIRO CIVIL OFICIAL 1</option>
+		<option value="SERRALHEIRO MECÂNICO OF.1">SERRALHEIRO MECÂNICO OF.1</option>
+		<option value="SOLDADOR ELECTR. OXIAC. OF.1">SOLDADOR ELECTR. OXIAC. OF.1</option>
+		<option value="SOLDADOR ELECTR. OXIAC. OF.2">SOLDADOR ELECTR. OXIAC. OF.2</option>
+		<option value="SOLDADOR ELECTR. OXIAC. OF.3">SOLDADOR ELECTR. OXIAC. OF.3</option>
+	  </select>
+      <div class="form-group raiser bellow">
+        <label class="text-raise" for="raise">Raise Category by %:</label>
+        <input type="number" name="group_percentage" class="form-control" min="0" step="0.1" placeholder="€ %">
+      </div>
+    </div>
+    <input class="submit" type="submit" />
+  </form>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var selectAllCheckbox = document.getElementById('selectallgroup');
+  var groupSelect = document.querySelector('select[name="groupselect"]');
+  var defaultOption = groupSelect.querySelector('option[selected]');
+  var selectAllDateCheckbox = document.getElementById('selectalldate');
+  var dateInput = document.querySelector('input[type="date"]');
+
+  var today = new Date().toISOString().split('T')[0];
+  dateInput.setAttribute('max', today);
+
+  selectAllCheckbox.addEventListener('change', function() {
+    if (this.checked) {
+      groupSelect.disabled = true;
+      groupSelect.value = defaultOption.value;
+    } else {
+      groupSelect.disabled = false;
+    }
+  });
+
+  selectAllDateCheckbox.addEventListener('change', function() {
+    if (this.checked) {
+      dateInput.disabled = true;
+      dateInput.value = '';
+    } else {
+      dateInput.disabled = false;
+    }
+  });
+});
+</script>
+{% endblock %}

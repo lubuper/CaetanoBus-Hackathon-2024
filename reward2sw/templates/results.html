@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<form action="{{ url_for('download_file') }}" method="POST" id="downloadForm">
+  <!-- Hidden input to store the hexadecimal data -->
+<!--  <input type="hidden" name="data" value="{{ excel_hex }}"> -->
+  <button type="submit" class="btn btn-primary">Download Processed Excel File</button>
+</form>
+<div class="content">
+  <table class="table table-sm" id="Table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Category</th>
+        <th scope="col">Contract</th>
+        <th scope="col">Previous Wage</th>
+        <th scope="col">Updated Wage</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for employee in employees %}
+        {% if employee.warning %}
+        <tr id="table-danger">
+        {% else %}
+        <tr>
+        {% endif %}
+            <td>{{ employee.id }}</td>
+            <td>{{ employee.name }}</td>
+            <td>{{ employee.category.name }}</td>
+            <td>{{ employee.contract }}</td>
+            <td>{{ employee.prevwage }}€</td>
+            <td>{{ employee.newwage }}€</td>
+            {% if employee.warning %}
+            <td>{{ employee.warningreason }}</td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}
