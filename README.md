@@ -1,6 +1,6 @@
 # reward2sw
 
-**Team Members:** Francisco Vieira, Pedro Silva
+**Team Members:** [Francisco Vieira](Xyckens), Pedro Silva
 
 ## Project Overview
 The goal of this project was to develop an interface for analyzing salary revision scenarios and benefit allocations based on predefined criteria.
